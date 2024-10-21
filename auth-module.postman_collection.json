@@ -1,74 +1,144 @@
 {
 	"info": {
-		"_postman_id": "b51b826a-156b-4e09-9242-9e1ce19a8823",
+		"_postman_id": "589101b6-fb87-488f-9e23-7196c2ab70de",
 		"name": "auth-module",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "8233727",
-		"_collection_link": "https://restless-equinox-987153.postman.co/workspace/Team-Workspace~612e1d9a-293b-4127-86b2-a89ce0f619c4/collection/8233727-b51b826a-156b-4e09-9242-9e1ce19a8823?action=share&source=collection_link&creator=8233727"
+		"_collection_link": "https://restless-equinox-987153.postman.co/workspace/Team-Workspace~612e1d9a-293b-4127-86b2-a89ce0f619c4/collection/8233727-589101b6-fb87-488f-9e23-7196c2ab70de?action=share&source=collection_link&creator=8233727"
 	},
 	"item": [
 		{
 			"name": "auth",
 			"item": [
 				{
-					"name": "login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"zohaibalishah1997@gmail.com\",\r\n    \"password\":\"zohaib\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "2factor",
+					"item": [
+						{
+							"name": "generate-2fa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/auth/generate-2fa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"auth",
+										"generate-2fa"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:3000/api/auth/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"auth",
-								"login"
-							]
+						{
+							"name": "verify-2fa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\":\"465459\",\r\n    \"userId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/auth/verify-2fa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"auth",
+										"verify-2fa"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "signup",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"zohiab ali shah\",\r\n    \"email\":\"zohaibalishah1997@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "email password auth",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"zohaibalishah1997@gmail.com\",\r\n    \"password\":\"zohaib\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:3000/api/auth/signup",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"auth",
-								"signup"
-							]
+						{
+							"name": "signup",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"zohaib ali shah\",\r\n    \"email\":\"zohaibalishah1997@gmail.com\",\r\n    \"password\":\"zohaib\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/auth/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
 					"name": "user-profile",
@@ -78,7 +148,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ6b2hpYWJAZ21haWwuY29tIiwiaWF0IjoxNzI5NDkwOTI1fQ.A0cQSq-8PY3cxwU_MJUw4QRTjbUHvlyurBvt5sA9UI8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ6b2hhaWJhbGlzaGFoMTk5N0BnbWFpbC5jb20iLCJpYXQiOjE3Mjk1MTAzNjgsImV4cCI6MTcyOTUxMzk2OH0.zRSt2XuSeooGGy-5G3IEmMzQ8xv7qmDn6b4eYsnVtjk",
 									"type": "string"
 								}
 							]
@@ -196,6 +266,36 @@
 								"api",
 								"auth",
 								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sent-sms",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"to\":\"+923149143061\",\r\n    \"body\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/sent-sms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"sent-sms"
 							]
 						}
 					},

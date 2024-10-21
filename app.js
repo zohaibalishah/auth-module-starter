@@ -25,6 +25,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  require('./config/db').databaseLoader();
   console.log(`Server is running on port ${PORT}`);
 });

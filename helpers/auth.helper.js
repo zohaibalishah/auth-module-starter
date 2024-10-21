@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const {dummyUsers} = require('../models/User');
 const { RESPONSE_MESSAGES } = require('../config/constant');
-
 module.exports.authenticate = async (req, res, next) => {
   const authorization = req.header('Authorization');
   if (!authorization) {
@@ -14,7 +13,7 @@ module.exports.authenticate = async (req, res, next) => {
   try {
     const token = authorization.split(' ')[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findByPk(decoded.id);
+    const user = dummyUsers.find((u) => u.id === decoded.id);
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -22,7 +21,7 @@ module.exports.authenticate = async (req, res, next) => {
       });
     }
 
-    req.user = user.dataValues;
+    req.user = user;
     next();
   } catch (err) {
     return res.status(401).json({
