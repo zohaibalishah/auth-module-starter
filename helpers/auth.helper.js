@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
-const {dummyUsers} = require('../models/User');
+const { dummyUsers } = require('../models/User');
 const { RESPONSE_MESSAGES } = require('../config/constant');
+
 module.exports.authenticate = async (req, res, next) => {
   const authorization = req.header('Authorization');
   if (!authorization) {
@@ -28,4 +29,22 @@ module.exports.authenticate = async (req, res, next) => {
       message: err.message,
     });
   }
+};
+
+module.exports.isAdmin = async (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({
+      success: false,
+      message: 'User not authenticated',
+    });
+  }
+
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({
+      success: false,
+      message: 'Access denied. Admins only.',
+    });
+  }
+
+  next();
 };

@@ -10,7 +10,6 @@ router.post('/update-password', authenticate, authController.updatePassword);
 router.post('/forgot-password', authController.forgotPassword);
 router.post('/reset-password', authController.resetPassword);
 
-
 // Route to generate 2FA secret
 router.post('/generate-2fa', authController.generate2FA);
 router.post('/verify-2fa', authController.verify2FA);
